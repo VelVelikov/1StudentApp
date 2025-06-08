@@ -11,7 +11,7 @@ on:
 jobs:
   unit-tests:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
@@ -31,7 +31,7 @@ jobs:
 
   security-tests:
     needs: unit-tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout the repository
@@ -48,7 +48,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: security-tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
