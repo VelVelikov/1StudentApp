@@ -43,6 +43,7 @@ jobs:
           
   deploy2:
     runs-on: ubuntu-latest
+    needs: security-tests
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to Production
